@@ -9,5 +9,5 @@ pip install flask flask_socketio
 
 ## Use
 1. Run `app.py`
-2. Go to `localhost:81` in your favorite browser
+2. Go to [`localhost:81`](http://localhost:81) in your favorite browser
 3. Send an HTTP Request (`GET` or `POST`) to `localhost:81/requests`
