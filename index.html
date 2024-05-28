@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Response Test Page</title>
+</head>
+<body>
+Web App with Python Flask!<br><br>
+
+<div id="place_for_responses"></div>
+
+<script crossorigin="anonymous"
+        integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+        src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script charset="utf-8" type="text/javascript">
+    let socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket.on('connect', function () {
+        console.log("Yay! I\'m connected!");
+        socket.emit('my_event', 'I\'m connected!');
+    });
+    socket.on('my_response', function (data) {
+        let htmlFrag = "<p>" + JSON.stringify(data) + "</p>";
+        let d1 = document.getElementById('place_for_responses');
+        d1.insertAdjacentHTML('beforeend', htmlFrag);
+        console.log('Updated HTML information');
+    });
+</script>
+</body>
+</html>
